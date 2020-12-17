@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Стефанова Дарья, 191-361, ЛР11</title>
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <div class="up_title">
+        <span class="title">Форма учета посещаемости студентов</span>
+    </div>
+
+    <div id="theme">
+        <center><span v-bind:title="message">Для отметки присутствия студента на занятии введите его имя и фамилию в форму и нажмите на кнопкку</span></center>
+    </div>
+
+    <div id="app">
+        
+    <div style="display: flex; align-items: center">
+        <div class="form_style" id="app_2">
+
+            <form class="note">
+                <h1>Заполните форму</h1>
+                <div><label>Фамилия</label>
+                    <input v-model="surname" required type="text" placeholder="Фамилия" /></div>
+                <div><label>Имя</label>
+                    <input required v-model="name" type="text" placeholder="Имя" /></div>
+
+                <center><button v-on:click="if(surname !== '' && name !== ''){students.push(surname+' '+name),setName()}" 
+						class="add_text" type="submit">Добавить</button></center>
+                
+            </form>
+
+          
+
+            <p v-if = "students.length == 0">Список пуст</p>
+            <ol>
+                <li v-for="student in students" v-if="surname!==null">
+                    <p class="list_item">{{student}} <button v-on:click="students.splice(index, 1)">Удалить</button></p>
+                </li>
+            </ol>
+            <span v-html="cell(surname,name)"></span>
+
+
+
+
+        </div>
+        <script>
+            var app_2 = new Vue({
+                el: '#app_2',
+                data: {
+                    surname: '',
+                    students: [],
+                    name: '',
+                    on: true
+                },
+                methods: {
+                    cell(surname, name) {
+                        console.log(surname, name);
+
+                    },
+                    setName: function () {
+                        this.surname = "";
+                        this.name = "";
+                    },
+                    on: function () {
+                        return false;
+                    }
+
+                }
+            })
+        </script>
+
+        <script>
+            var theme = new Vue({
+                el: '#theme',
+                data: {
+                    message: 'Введите фамилию и имя студента, после этого нажмите "Добавить"!'
+                }
+            })
+        </script>
+    </div>
+
+
+
+<footer>
+    <span><a href="https://github.com/DashaS00/Task11">Сслыка на GitHub</a></span>
+
+</footer>
+
+
+
+</body>
+
+</html>
