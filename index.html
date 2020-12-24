@@ -28,13 +28,9 @@
                     <input v-model="surname" required type="text" placeholder="Фамилия" /></div>
                 <div><label>Имя</label>
                     <input required v-model="name" type="text" placeholder="Имя" /></div>
-
-                <center><button v-on:click="if(surname !== '' && name !== ''){students.push(surname+' '+name),setName()}" 
-						class="add_text" type="submit">Добавить</button></center>
-                
+                <center><button v-on:click="if(surname !== '' && name !== ''){students.push(surname+' '+name), setName()}" 
+						class="add_text" type="submit">Добавить</button></center>   
             </form>
-
-
 
 
             <p v-if = "students.length == 0">Список пуст</p>
@@ -63,7 +59,7 @@
                         this.surname = "";
                         this.name = "";
                     },
-                    on: function () {
+                    on1: function () {
                         return false;
                     }
                 }
